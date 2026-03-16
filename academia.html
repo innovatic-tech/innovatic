@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Academia | InnovaTic</title>
+    <link rel="icon" href="https://i.imgur.com/qeq5VTr.png" type="image/png">
+    <link rel="stylesheet" href="./estilos.css">
+</head>
+<body>
+
+    <header> 
+        <div class="logo-container" onclick="window.location.href='index.html'">
+            <img src="https://i.imgur.com/OBkw9NM.png" alt="InnovaTic Logo" class="logo-img">
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="academia.html">La Academia</a>
+            <a href="index.html#cursos">Cursos</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn-inscribirse" onclick="window.location.href='index.html#contacto'">¡Inscríbete Hoy!</button>
+            
+            <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+
+      
+    </header>
+
+    <main id="nosotros" class="seccion-pagina activa">
+        <section class="academia">
+
+            <div class="barra-confianza">
+                ✔ Certificación incluida
+                <span>|</span>
+                ✔ Cupos limitados
+                <span>|</span>
+                ✔ Inscripciones abiertas
+            </div>
+
+            <h2>Nuestra <span class="text-gradient">Academia</span></h2>
+            <p class="sub">
+                Formamos creadores digitales con disciplina, innovación
+                y enfoque práctico.
+            </p>
+
+            <div class="bloque glass">
+                <div class="mv-grid">
+                    <div class="mv-box">
+                        <h3>🎯 Misión</h3>
+                        <p>Desarrollar competencias tecnológicas mediante formación práctica y estructurada.</p>
+                    </div>
+
+                    <div class="mv-box">
+                        <h3>🚀 Visión</h3>
+                        <p>Ser referentes en educación digital con impacto real en la comunidad.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bloque video-box">
+    <h3>🎥 Conoce Nuestra Experiencia</h3>
+    <div class="video-container">
+        <iframe 
+            src="https://www.youtube.com/embed/TYKiHiEVq0U" 
+            title="Video de InnovaTic" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+</div>
+
+            <div class="bloque metodologia-section">
+                <h3 class="titulo-central">
+                    ¿Por Qué <span class="text-gradient">Elegirnos</span>?
+                </h3>
+                <div class="elegirnos-grid">
+                    <div>Metodología 100% práctica</div>
+                    <div>Clases personalizadas</div>
+                    <div>Proyectos reales</div>
+                    <div>Certificación incluida</div>
+                    <div>Acompañamiento continuo</div>
+                </div>
+
+                <div class="metodologia-contenido">
+                    <h3 class="titulo-central">
+                        🚀 Metodología de Enseñanza
+                    </h3>
+                    <div class="metodologia-pasos">
+                        <div class="paso">
+                            <h4>Aprender haciendo</h4>
+                            <p>Práctica desde el primer día con aplicación inmediata.</p>
+                        </div>
+                        <div class="paso">
+                            <h4>Proyectos por nivel</h4>
+                            <p>Desarrollo progresivo con retos reales.</p>
+                        </div>
+                        <div class="paso">
+                            <h4>Evaluación práctica</h4>
+                            <p>Medimos lo que el estudiante crea y construye.</p>
+                        </div>
+                        <div class="paso">
+                            <h4>Mentoría personalizada</h4>
+                            <p>Seguimiento constante y acompañamiento estratégico.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bloque stats-box">
+                <h3>📊 Resultados</h3>
+                <div class="stats">
+                    <div><h2>+200</h2><p>Estudiantes</p></div>
+                    <div><h2>95%</h2><p>Satisfacción</p></div>
+                    <div><h2>5+</h2><p>Años</p></div>
+                    <div><h2>+50</h2><p>Proyectos</p></div>
+                </div>
+            </div>
+
+           <div class="bloque perfil-section">
+                <h3 class="titulo-central">
+                    🎓 Perfil del <span class="text-gradient">Estudiante</span>
+                </h3>
+                <p class="perfil-sub">
+                    Nuestros programas están diseñados para distintos perfiles con objetivos claros
+                    y enfoque práctico.
+                </p>
+                <div class="perfil-grid-elegante">
+                    <div class="perfil-item">
+                        <h4>Niños (8–12 años)</h4>
+                        <p>Inician en programación y pensamiento lógico mediante herramientas visuales y creativas.</p>
+                    </div>
+                    <div class="perfil-item">
+                        <h4>Jóvenes (13–17 años)</h4>
+                        <p>Desarrollan proyectos reales en programación, diseño y tecnología aplicada.</p>
+                    </div>
+                    <div class="perfil-item">
+                        <h4>Emprendedores</h4>
+                        <p>Aprenden habilidades digitales para potenciar sus negocios y presencia online.</p>
+                    </div>
+                    <div class="perfil-item">
+                        <h4>Docentes</h4>
+                        <p>Fortalecen sus competencias TIC para innovar en el aula con herramientas actuales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bloque instructor-section"> 
+                <h3>💼 Nuestro Instructor</h3>
+                <div class="instructor-box">
+                    <div class="instructor-img">
+                        <img src="https://img.sorianoticias.com/imagenes/2026-02/profesor-informatica_260204130620.png" alt="Instructor">
+                    </div>
+                    <div class="instructor-info">
+                        <h4>Ing. Juan Pérez</h4>
+                        <p class="cargo">
+                            Especialista en Tecnología Educativa & Desarrollo Web
+                        </p>
+                        <div class="badges">
+                            <span>🎓 Ingeniero en Sistemas</span>
+                            <span>🏫 Universidad Técnica de Manabí</span>
+                            <span>📜 Certificación en Desarrollo Web</span>
+                            <span>💻 5+ años de experiencia</span>
+                        </div>
+                        <div class="descripcion">
+                            <p>
+                                Profesional apasionado por la educación digital con experiencia
+                                formando jóvenes y adultos en programación, diseño web y competencias TIC.
+                            </p>
+                            <p>
+                                Ha liderado más de 50 proyectos académicos aplicados al entorno real,
+                                combinando disciplina, innovación y metodología práctica.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bloque valores-section">
+                <h3>🛡 Valores Institucionales</h3>
+                <div class="valores-grid">
+                    <div class="valor-item">Responsabilidad</div>
+                    <div class="valor-item">Disciplina</div>
+                    <div class="valor-item">Innovación</div>
+                    <div class="valor-item">Ética Digital</div>
+                    <div class="valor-item">Respeto</div>
+                </div>
+            </div>
+
+            <div class="bloque">
+                <h3>📸 Nuestro Ambiente</h3>
+                <div class="nosotros-grid mejorada">
+                    <img src="https://i.imgur.com/205xWvf.jpeg">
+                    <img src="https://i.imgur.com/xuO4KsC.jpeg">
+                    <img src="https://i.imgur.com/Kv0bE9H.jpeg">
+                    <img src="https://i.imgur.com/4Smbjwt.jpeg"> 
+                    <img src="https://i.imgur.com/vrWEqlg.jpeg">
+                    <img src="https://i.imgur.com/NVaVxPR.jpeg">
+                </div>
+            </div>
+
+            <div class="bloque testimonial premium-testimonial">
+                <h3>⭐ Opiniones</h3>
+                <p>"Aprendí a programar mi primer proyecto real en pocas semanas."</p>
+                <strong>- Estudiante InnovaTic</strong>
+            </div>
+
+            <div class="asesor-box">
+                <h3> 🧠Descubre tu curso ideal</h3>
+                <select id="edadSelector">
+                    <option value="">Selecciona tu edad</option>
+                    <option value="nino">7 - 12 años</option>
+                    <option value="joven">13 - 17 años</option>
+                    <option value="adulto">18 años en adelante</option>
+                </select>
+                <select id="interesSelector">
+                    <option value="">¿Qué te interesa más?</option>
+                    <option value="programacion">Programación</option>
+                    <option value="diseno">Diseño y creatividad</option>
+                    <option value="ofimatica">Ofimática</option>
+                    <option value="robotica">Robótica</option>
+                </select>
+                <button onclick="recomendarCurso()">Ver recomendación</button>
+                <div id="resultadoCurso" class="resultado-curso"></div>
+            </div>
+
+            <section class="faq-section">
+                <h2>Preguntas Frecuentes</h2>
+                <div class="faq-item">
+                    <button class="faq-question">¿Necesito conocimientos previos?</button>
+                    <div class="faq-answer">No. Nuestros cursos están diseñados desde nivel básico.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Qué edad mínima se requiere?</button>
+                    <div class="faq-answer">Desde los 7 años en adelante.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Incluye certificado?</button>
+                    <div class="faq-answer">Sí, entregamos certificado al finalizar el curso.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">¿Cómo puedo inscribirme?</button>
+                    <div class="faq-answer">Puedes inscribirte a través del formulario o contactándonos por WhatsApp.</div>
+                </div>
+            </section>
+             
+           
+
+        </section>
+    </main>
+
+    <a href="https://wa.me/593982792425?text=Hola%20quiero%20información%20sobre%20los%20cursos"
+       class="whatsapp-float"
+       target="_blank">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path fill="white" d="M16 .4C7.5.4.6 7.3.6 15.8c0 2.8.7 5.5 2.1 7.9L.4 31.6l8.1-2.2c2.3 1.2 4.9 1.8 7.5 1.8 8.5 0 15.4-6.9 15.4-15.4S24.5.4 16 .4zm0 28.2c-2.3 0-4.6-.6-6.6-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.3-2-2-4.3-2-6.6C3.1 8.6 9 2.7 16 2.7s12.9 5.9 12.9 13-5.9 12.9-12.9 12.9zm7.1-9.6c-.4-.2-2.3-1.1-2.7-1.2-.4-.2-.6-.2-.9.2s-1 1.2-1.2 1.4c-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.3-2.2-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.6.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6s-.9-2.2-1.2-3c-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.2 3.4 1.3 3.6c.2.2 2.4 3.7 5.8 5.2.8.3 1.4.5 1.9.6.8.2 1.5.2 2.1.1.6-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.3-.3-.7-.5z"/>
+       </svg>
+    </a>
+
+   <footer class="footer-complex">
+        <div class="footer-content">
+           <div class="footer-column">
+    <h3 class="footer-text-logo">INNOVATIC</h3> 
+    <p>Innovación y tecnología para el futuro. Formamos los líderes digitales de mañana.</p>
+</div>
+
+            <div class="footer-column">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="academia.html">La Academia</a></li>
+                    <li><a href="index.html#cursos">Nuestros Cursos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Contacto</h4>
+                <p>📍 Dirección: Tu Ciudad, Ecuador</p>
+                <p>📞 WhatsApp: +593 99 170 5088</p>
+                <p>📧 Email: info@innovatic.com</p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Síguenos</h4>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                        <img src="https://cdn-icons-png.flaticon.com/512/81/81341.png" alt="FB">
+                    </a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                        <img src="https://cdn-icons-png.flaticon.com/512/87/87390.png" alt="IG">
+                    </a>
+                    <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1946/1946552.png" alt="TK">
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 InnovaTic Academy. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/593982792425?text=Hola%20quiero%20información%20sobre%20la%20academia"
+       class="whatsapp-float"
+       target="_blank">
+       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path fill="white" d="M16 .4C7.5.4.6 7.3.6 15.8c0 2.8.7 5.5 2.1 7.9L.4 31.6l8.1-2.2c2.3 1.2 4.9 1.8 7.5 1.8 8.5 0 15.4-6.9 15.4-15.4S24.5.4 16 .4zm0 28.2c-2.3 0-4.6-.6-6.6-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5c-1.3-2-2-4.3-2-6.6C3.1 8.6 9 2.7 16 2.7s12.9 5.9 12.9 13-5.9 12.9-12.9 12.9zm7.1-9.6c-.4-.2-2.3-1.1-2.7-1.2-.4-.2-.6-.2-.9.2s-1 1.2-1.2 1.4c-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1-2-2.3-2.2-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.6.2-.2.2-.4.3-.6.1-.2 0-.4 0-.6s-.9-2.2-1.2-3c-.3-.8-.6-.7-.9-.7h-.8c-.3 0-.6.1-.9.4s-1.2 1.2-1.2 2.9 1.2 3.4 1.3 3.6c.2.2 2.4 3.7 5.8 5.2.8.3 1.4.5 1.9.6.8.2 1.5.2 2.1.1.6-.1 2.3-.9 2.6-1.8.3-.9.3-1.7.2-1.8-.1-.2-.3-.3-.7-.5z"/>
+       </svg>
+    </a>
+
+    <script src="./estilo.js"></script>
+</body>
+</html>
+
+
+   
+
+
+
+
+
