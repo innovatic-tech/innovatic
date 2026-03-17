@@ -4,7 +4,7 @@
     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://tuweb.com/academia.html</loc>
+    <loc>https://innovatic-tech.github.io/innovatic/academia.html</loc>
     <image:image>
       <image:loc>https://innovatic-tech.github.io/innovatic/curso-.jpg</image:loc>
       <image:caption>Clase práctica de programación en InnovaTic</image:caption>
