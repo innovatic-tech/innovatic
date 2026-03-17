@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://innovatic-tech.github.io/innovatic/sitemap.xml

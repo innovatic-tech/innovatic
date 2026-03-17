@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://tuweb.com/academia.html</loc>
+    <image:image>
+      <image:loc>https://innovatic-tech.github.io/innovatic/curso-.jpg</image:loc>
+      <image:caption>Clase práctica de programación en InnovaTic</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://innovatic-tech.github.io/innovatic/imagen.jpg</image:loc>
+      <image:caption>Ambiente creativo de aprendizaje</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://innovatic-tech.github.io/innovatic/imagen2.jpg</image:loc>
+      <image:caption>Estudiantes trabajando en proyectos reales</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://tuweb.com/imagenes/4Smbjwt - Imgur.jpg</image:loc>
+      <image:caption>Sesión práctica de diseño digital</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://i.imgur.com/vrWEqlg.jpeg</image:loc>
+      <image:caption>Laboratorio tecnológico de InnovaTic</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://i.imgur.com/NVaVxPR.jpeg</image:loc>
+      <image:caption>Estudiantes desarrollando proyectos innovadores</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://img.sorianoticias.com/imagenes/2026-02/profesor-informatica_260204130620.png</image:loc>
+      <image:caption>Ing. Juan Pérez, nuestro instructor experto</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
