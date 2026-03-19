@@ -50,7 +50,19 @@ Curso: ${curso}
         const form = document.getElementById("formRegistro");
 const mensaje = document.getElementById("mensajeEstado");
 
+form.addEventListener("submit", async function(e) {
+    e.preventDefault();
 
+    const data = new FormData(form);
+
+    try {
+        const response = await fetch("https://formspree.io/f/xkoqybrl", {
+            method: "POST",
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
 
         if (response.ok) {
            const modal = document.getElementById("mensajeExito");
