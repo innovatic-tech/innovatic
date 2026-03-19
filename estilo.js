@@ -213,3 +213,36 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxNqT3r_Haf3EbZSXWeAh-wYWCpzpQQntyQqAEWManOCbRdv5_LhKHQ58ohbIcm6Q-B/exec';
+const form = document.getElementById('formRegistro');
+const mensajeExito = document.getElementById('mensajeExito');
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    
+    // Mostrar loader
+    mensajeExito.style.display = 'flex';
+    document.getElementById('loaderIcon').style.display = 'block';
+    document.getElementById('checkIcon').style.display = 'none';
+    document.getElementById('textoMensaje').innerText = 'Guardando datos...';
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            // Cambiar loader por check de éxito
+            document.getElementById('loaderIcon').style.display = 'none';
+            document.getElementById('checkIcon').style.display = 'block';
+            document.getElementById('textoMensaje').innerText = '¡Registro completado con éxito!';
+            
+            form.reset(); // Limpiar formulario
+
+            // Ocultar modal después de 3 segundos
+            setTimeout(() => {
+                mensajeExito.style.display = 'none';
+            }, 3000);
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert('Hubo un error al enviar los datos.');
+        });
+});
