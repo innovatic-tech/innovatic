@@ -1,4 +1,30 @@
- // Función Menú Móvil (Hamburguesa Animada)
+// Esta función es la que hace que los botones funcionen
+function irA(id) {
+    // 1. Buscamos todas las secciones (Inicio, Cursos, Contacto)
+    const secciones = document.querySelectorAll('.seccion-pagina');
+    
+    // 2. Les quitamos la clase 'activa' a todas para que se oculten
+    secciones.forEach(s => s.classList.remove('activa'));
+
+    // 3. Buscamos la sección a la que queremos ir (ej: 'contacto')
+    const destino = document.getElementById(id);
+    
+    // 4. Si existe, le ponemos la clase 'activa' para que se vea
+    if (destino) {
+        destino.classList.add('activa');
+        // Esto hace que la página suba al inicio automáticamente
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Opcional: Cerrar el menú móvil si está abierto
+    const navMobile = document.getElementById('navLinksMobile');
+    if (navMobile && navMobile.classList.contains('active')) {
+        navMobile.classList.remove('active');
+    }
+}
+
+
+// Función Menú Móvil (Hamburguesa Animada)
         function toggleMenu() {
             const menuBtn = document.getElementById('menuBtn');
             const navMobile = document.getElementById('navLinksMobile');
