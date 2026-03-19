@@ -55,50 +55,46 @@ form.addEventListener("submit", async function(e) {
 
     const data = new FormData(form);
 
-    form.addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    const data = new FormData(form);
-    // Convertimos los datos para que Google Script los reciba correctamente
-    const queryString = new URLSearchParams(data).toString();
-
     try {
-        // REEMPLAZA LA URL DE ABAJO CON LA QUE COPIASTE EN EL PASO ANTERIOR
-        const response = await fetch("https://script.google.com/macros/s/AKfycbwgyis9v4FOZC9efqIDMCt4DfjP2cw3qK1irLOemrZ7YjWPzUtIc-LdwZUUHQ58Dj8B/exec" + queryString, {
-            method: "POST"
+        const response = await fetch("https://formspree.io/f/xkoqybrl", {
+            method: "POST",
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
         });
 
         if (response.ok) {
-            // El resto de tu código de éxito (modal, loader, etc.) se queda exactamente igual
-            const modal = document.getElementById("mensajeExito");
-            const loader = document.getElementById("loaderIcon");
-            const check = document.getElementById("checkIcon");
-            const texto = document.getElementById("textoMensaje");
+           const modal = document.getElementById("mensajeExito");
+const loader = document.getElementById("loaderIcon");
+const check = document.getElementById("checkIcon");
+const texto = document.getElementById("textoMensaje");
 
-            modal.style.display = "flex";
-            loader.style.display = "block";
-            check.style.display = "none";
-            texto.textContent = "Enviando información...";
+modal.style.display = "flex";
 
-            setTimeout(() => {
-                loader.style.display = "none";
-                check.style.display = "block";
-                texto.innerHTML = "Mensaje enviado con éxito.<br>Nos contactaremos lo más rápido posible con usted.";
-            }, 1500);
+loader.style.display = "block";
+check.style.display = "none";
+texto.textContent = "Enviando información...";
 
-            setTimeout(() => {
-                modal.style.display = "none";
-            }, 4000);
+setTimeout(() => {
+    loader.style.display = "none";
+    check.style.display = "block";
+    texto.innerHTML = "Mensaje enviado con éxito.<br>Nos contactaremos lo más rápido posible con usted.";
+}, 1500);
 
-            form.reset();
+setTimeout(() => {
+    modal.style.display = "none";
+}, 4000);
+
+form.reset();
         } else {
             alert("Hubo un error al enviar el mensaje.");
         }
+
     } catch (error) {
         alert("Error de conexión.");
     }
 });
-
 function mostrarAlerta(texto){
     const alerta = document.getElementById("alertaCustom");
     alerta.textContent = texto;
