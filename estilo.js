@@ -56,13 +56,14 @@ form.addEventListener("submit", async function(e) {
     const data = new FormData(form);
 
     try {
-        const response = await fetch("https://formspree.io/f/xkoqybrl", {
-            method: "POST",
-            body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
-        });
+       // Reemplaza "TU_NUEVA_URL_AQUI" con el enlace que copiaste en el Paso 3
+const scriptURL = "https://script.google.com/macros/s/AKfycbxNqT3r_Haf3EbZSXWeAh-wYWCpzpQQntyQqAEWManOCbRdv5_LhKHQ58ohbIcm6Q-B/exec"; 
+
+const response = await fetch(scriptURL, {
+    method: "POST",
+    body: data
+    // Hemos quitado el header 'Accept' porque a veces causa problemas de CORS (bloqueos) con Google Scripts
+});
 
         if (response.ok) {
            const modal = document.getElementById("mensajeExito");
