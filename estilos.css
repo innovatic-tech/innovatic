@@ -1272,6 +1272,20 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 0 15px; /* Margen para que no toque los bordes en celular */
 }
 
+/* Oculta todas las secciones por defecto */
+.seccion-pagina {
+    display: none;
+}
 
+/* Solo muestra la que tenga la clase 'activa' */
+.seccion-pagina.activa {
+    display: block;
+    animation: fadeIn 0.5s ease; /* Un efecto suave de aparición */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
 
