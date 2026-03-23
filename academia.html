@@ -9,19 +9,19 @@
 </head>
 <body>
 
-    <header> 
-        <div class="logo-container" onclick="window.location.href='index.html'">
-            <img src="logo.png" alt="InnovaTic Logo" class="logo-img">
-        </div>
+     <header> 
+        <div class="logo-container" onclick="irA('inicio')">
+    <img src="https://i.imgur.com/OBkw9NM.png" alt="InnovaTic Logo" class="logo-img">
+     </div>
 
         <nav class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="academia.html">La Academia</a>
-            <a href="index.html#cursos">Cursos</a>
+            <a onclick="irA('inicio')">Inicio</a>
+            <a href="./academia.html">La Academia</a>
+            <a onclick="irA('cursos')">Cursos</a>
         </nav>
 
         <div class="header-actions">
-            <button class="btn-inscribirse" onclick="window.location.href='index.html#contacto'">¡Inscríbete Hoy!</button>
+           <button class="btn-inscribirse" onclick="irA('contacto')">¡Inscríbete Hoy!</button>
             
             <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
                 <div class="line1"></div>
@@ -30,8 +30,14 @@
             </div>
         </div>
 
-      
+        <nav class="nav-links mobile" id="navLinksMobile">
+    <a onclick="irA('inicio')">Inicio</a>
+    <a href="./academia.html">La Academia</a>
+    <a onclick="irA('cursos')">Cursos</a>
+    <a onclick="irA('contacto')">Contacto</a>
+</nav>
     </header>
+
 
     <main id="nosotros" class="seccion-pagina activa">
         <section class="academia">
