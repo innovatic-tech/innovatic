@@ -1272,6 +1272,33 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 0 15px; /* Margen para que no toque los bordes en celular */
 }
 
+@media (max-width: 768px){
 
+    .footer-content{
+        grid-template-columns: 1fr; /* UNA sola columna */
+        text-align: center;
+    }
+
+    .footer-column{
+        margin-bottom: 30px;
+    }
+
+    .footer-column ul{
+        padding: 0;
+    }
+
+    .footer-column ul li{
+        margin-bottom: 8px;
+    }
+
+    .social-links{
+        justify-content: center;
+    }
+
+    .footer-text-logo{
+        text-align: center;
+    }
+
+}
 
 
