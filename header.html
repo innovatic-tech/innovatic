@@ -555,7 +555,43 @@ form button:hover { opacity: 0.9; transform: scale(1.02); }
 .overlay.active {
     opacity: 1;
     pointer-events: all;
-}                              
+}
+    /* --- CAMBIOS EN EL FORMULARIO --- */
+form {
+    background: rgba(15, 23, 42, 0.8);
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 800px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 15px;
+}
+
+form h2, #respuesta, .form-footer {
+    grid-column: 1 / -1; 
+}
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+@media (min-width: 768px) {
+    form {
+        grid-template-columns: 1fr 1fr; 
+        column-gap: 30px;
+    }
+    
+   
+    form button {
+        grid-column: 1 / -1;
+    }
+}
 </style>
 <body>
 <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
@@ -588,37 +624,49 @@ form button:hover { opacity: 0.9; transform: scale(1.02); }
         </nav>
     </header>
 
-    <main class="contenedor-formulario">
-        <form id="formulario">
-            <h2>Reserva tu Cupo</h2>
+   <main class="contenedor-formulario">
+    <form id="formulario">
+        <h2>Reserva tu Cupo</h2>
 
+        <div class="form-group">
             <label>Nombre del Representante:</label>
             <input type="text" name="representante" required>
+        </div>
 
+        <div class="form-group">
             <label>Nombre del Estudiante:</label>
             <input type="text" name="estudiante" required>
+        </div>
 
+        <div class="form-group">
             <label>Edad del Estudiante:</label>
-            <input type="number" name="edad"  maxlength="2" inputmode="numeric"  required>
+            <input type="number" name="edad" maxlength="2" inputmode="numeric" required>
+        </div>
 
+        <div class="form-group">
             <label>Curso a seguir:</label>
             <select name="curso" required>
                 <option value="">Selecciona</option>
                 <option>Competencias digitales</option>
                 <option>Programación con scratch y modulado 3D</option>
             </select>
+        </div>
 
+        <div class="form-group">
             <label>Número de Celular:</label>
-            <input type="tel" name="celular" maxlength="10" inputmode="numeric"  required>
+            <input type="tel" name="celular" maxlength="10" inputmode="numeric" required>
+        </div>
 
+        <div class="form-group">
             <label>Horario disponible:</label>
             <select name="horario" id="horario" required>
                 <option value="">Cargando horarios...</option>
             </select>
+        </div>
 
-            <button type="submit">📩 Enviar Información</button>
-        </form>
-    </main>
+        <button type="submit">📩 Enviar Información</button>
+    </form>
+</main>
 
     <div id="modal" class="modal">
         <div class="modal-content">
