@@ -1275,16 +1275,16 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 @media (max-width: 768px){
 
     .footer-content{
-        grid-template-columns: 1fr; /* UNA sola columna */
-        text-align: center;
+        grid-template-columns: 1fr;
+        text-align: left; /* 👈 clave */
     }
 
     .footer-column{
-        margin-bottom: 30px;
+        margin-bottom: 25px;
     }
 
     .footer-column ul{
-        padding: 0;
+        padding-left: 0;
     }
 
     .footer-column ul li{
@@ -1292,13 +1292,11 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .social-links{
-        justify-content: center;
+        justify-content: flex-start; 
     }
 
     .footer-text-logo{
-        text-align: center;
+        text-align: left;
     }
 
 }
-
-
