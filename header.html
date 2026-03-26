@@ -599,7 +599,7 @@ form button:hover { opacity: 0.9; transform: scale(1.02); }
             <input type="text" name="estudiante" required>
 
             <label>Edad del Estudiante:</label>
-            <input type="number" name="edad" required>
+            <input type="number" name="edad" inputmode="numeric" pattern="[0-9]{1,2}" maxlength="2" onkeypress="return /[0-9]/.test(event.key)" required>
 
             <label>Curso a seguir:</label>
             <select name="curso" required>
@@ -609,7 +609,7 @@ form button:hover { opacity: 0.9; transform: scale(1.02); }
             </select>
 
             <label>Número de Celular:</label>
-            <input type="tel" name="celular" required>
+            <input type="tel" name="celular" maxlength="10" inputmode="numeric"  required>
 
             <label>Horario disponible:</label>
             <select name="horario" id="horario" required>
