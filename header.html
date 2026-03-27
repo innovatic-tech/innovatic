@@ -458,17 +458,18 @@ header {
 /* --- DISEÑO DEL FORMULARIO --- */
 form {
     background: rgba(15, 23, 42, 0.8);
-    padding: 30px;
+    padding: 25px; /* Relleno un poco más ajustado para móviles */
     border-radius: 16px;
-    width: 95%;
-    max-width: 850px; /* Un poco más ancho para que las 2 columnas luzcan bien */
+    width: 85%; /* AQUÍ ESTÁ EL TRUCO: Deja un 7.5% de espacio libre a cada lado en el celular */
+    max-width: 850px; 
     backdrop-filter: blur(10px);
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
     
-    /* Activamos Grid */
+    /* Activamos Grid para la estructura */
     display: grid;
-    grid-template-columns: 1fr; /* Por defecto: 1 columna (móviles) */
+    grid-template-columns: 1fr; /* 1 columna en teléfonos */
     gap: 20px;
+    margin: 0 auto; /* Asegura que el formulario esté perfectamente centrado */
 }
 
 /* Forzamos a que el Título y el Botón ocupen siempre todo el ancho */
@@ -486,12 +487,12 @@ form button,
 /* --- RESPONSIVE: 2 COLUMNAS EN PC --- */
 @media (min-width: 768px) {
     form {
+        width: 90%; /* En pantallas grandes puede aprovechar más el espacio */
         grid-template-columns: 1fr 1fr; /* Dividimos en 2 columnas iguales */
         column-gap: 30px;
-        padding: 40px;
+        padding: 40px; /* Recuperamos el relleno amplio para PC */
     }
 }
-
 form h2 {
     text-align: center;
     font-size: 28px;
