@@ -592,6 +592,70 @@ form h2, #respuesta, .form-footer {
         grid-column: 1 / -1;
     }
 }
+    .modal-content {
+    background: #020617;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    /* Aquí faltaba cerrar el rgba y la llave de la clase */
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.5); 
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s;
+    z-index: 1000;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* --- CAMBIOS EN EL FORMULARIO --- */
+/* Al solucionar el error de arriba, el navegador ya podrá leer esto: */
+form {
+    background: rgba(15, 23, 42, 0.8);
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 800px; /* Esto lo hace más ancho en PC */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna en celulares */
+    gap: 15px;
+}
+
+form h2, #respuesta, .form-footer {
+    grid-column: 1 / -1; 
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Media query para PC y Tablets grandes */
+@media (min-width: 768px) {
+    form {
+        grid-template-columns: 1fr 1fr; /* 2 columnas en PC */
+        column-gap: 30px;
+    }
+    
+    form button {
+        grid-column: 1 / -1; /* El botón ocupa todo el ancho abajo */
+    }
+}
 </style>
 <body>
 <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
