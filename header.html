@@ -455,13 +455,41 @@ header {
     padding-top: 80px; 
 }
 
+/* --- DISEÑO DEL FORMULARIO --- */
 form {
     background: rgba(15, 23, 42, 0.8);
     padding: 30px;
     border-radius: 16px;
-    width: 350px;
+    width: 95%;
+    max-width: 850px; /* Un poco más ancho para que las 2 columnas luzcan bien */
     backdrop-filter: blur(10px);
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    
+    /* Activamos Grid */
+    display: grid;
+    grid-template-columns: 1fr; /* Por defecto: 1 columna (móviles) */
+    gap: 20px;
+}
+
+/* Forzamos a que el Título y el Botón ocupen siempre todo el ancho */
+form h2, 
+form button, 
+#respuesta {
+    grid-column: 1 / -1; 
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- RESPONSIVE: 2 COLUMNAS EN PC --- */
+@media (min-width: 768px) {
+    form {
+        grid-template-columns: 1fr 1fr; /* Dividimos en 2 columnas iguales */
+        column-gap: 30px;
+        padding: 40px;
+    }
 }
 
 form h2 {
@@ -556,106 +584,8 @@ form button:hover { opacity: 0.9; transform: scale(1.02); }
     opacity: 1;
     pointer-events: all;
 }
-    /* --- CAMBIOS EN EL FORMULARIO --- */
-form {
-    background: rgba(15, 23, 42, 0.8);
-    padding: 30px;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 800px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    display: grid;
-    grid-template-columns: 1fr; 
-    gap: 15px;
-}
-
-form h2, #respuesta, .form-footer {
-    grid-column: 1 / -1; 
-}
-
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-
-@media (min-width: 768px) {
-    form {
-        grid-template-columns: 1fr 1fr; 
-        column-gap: 30px;
-    }
-    
    
-    form button {
-        grid-column: 1 / -1;
-    }
-}
-    .modal-content {
-    background: #020617;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
-    color: white;
-    /* Aquí faltaba cerrar el rgba y la llave de la clase */
-    box-shadow: 0 0 20px rgba(34, 211, 238, 0.5); 
-}
 
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.4s;
-    z-index: 1000;
-}
-
-.overlay.active {
-    opacity: 1;
-    pointer-events: all;
-}
-
-/* --- CAMBIOS EN EL FORMULARIO --- */
-/* Al solucionar el error de arriba, el navegador ya podrá leer esto: */
-form {
-    background: rgba(15, 23, 42, 0.8);
-    padding: 30px;
-    border-radius: 16px;
-    width: 90%;
-    max-width: 800px; /* Esto lo hace más ancho en PC */
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    display: grid;
-    grid-template-columns: 1fr; /* 1 columna en celulares */
-    gap: 15px;
-}
-
-form h2, #respuesta, .form-footer {
-    grid-column: 1 / -1; 
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Media query para PC y Tablets grandes */
-@media (min-width: 768px) {
-    form {
-        grid-template-columns: 1fr 1fr; /* 2 columnas en PC */
-        column-gap: 30px;
-    }
-    
-    form button {
-        grid-column: 1 / -1; /* El botón ocupa todo el ancho abajo */
-    }
-}
 </style>
 <body>
 <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
