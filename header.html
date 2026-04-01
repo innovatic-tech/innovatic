@@ -148,16 +148,35 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="Diseño.png" alt="Logo" class="logo-img" onclick="window.location.href='index.html'">
-        </div>
-        <nav class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="academia.html">La Academia</a>
+    <header> 
+        <div class="logo-container" onclick="irA('inicio')">
+    <img src="Diseño.png" alt="InnovaTic Logo" class="logo-img">
+     </div>
+
+       <nav class="nav-links">
+            <a href="./index.html">Inicio</a>
+            <a href="./academia.html">La Academia</a>
             <a href="cursos.html">Cursos</a>
         </nav>
-        <button class="btn-inscribirse">¡Inscríbete!</button>
+
+        <div class="header-actions">
+           <a href="header.html" class="btn-inscribirse">¡Inscríbete Hoy!</a>
+
+
+            
+            <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+
+        <nav class="nav-links mobile" id="navLinksMobile">
+    <a href="./index.html">Inicio</a>
+    <a href="./academia.html">La Academia</a>
+    <a href="cursos.html">Cursos</a>
+    
+</nav>
     </header>
 
     <main class="contenedor-formulario">
