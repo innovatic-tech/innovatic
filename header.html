@@ -26,7 +26,6 @@
             background-image: radial-gradient(circle at top right, rgba(0, 242, 254, 0.1), transparent 400px);
         }
 
-        /* --- NAVEGACIÓN --- */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             backdrop-filter: blur(10px);
@@ -42,7 +41,6 @@
         }
 
         .logo-img { height: 40px; cursor: pointer; }
-
         .nav-links { display: flex; gap: 35px; }
         .nav-links a { color: white; text-decoration: none; font-weight: 600; font-size: 1rem; }
 
@@ -57,7 +55,6 @@
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
         }
 
-        /* --- FORMULARIO --- */
         .contenedor-formulario {
             display: flex;
             justify-content: center;
@@ -118,8 +115,6 @@
             transition: 0.3s;
         }
 
-        button:hover { transform: scale(1.02); opacity: 0.9; }
-
         /* --- MODAL --- */
         .modal {
             position: fixed;
@@ -143,14 +138,12 @@
             border: 4px solid #f3f3f3;
             border-top: 4px solid var(--primary-color);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             animation: spin 1s linear infinite;
             margin: 0 auto 15px;
         }
 
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
     </style>
 </head>
 <body>
@@ -173,12 +166,12 @@
 
             <div class="form-group">
                 <label>Nombre del Representante:</label>
-                <input type="text" name="representante" placeholder="Ej: Juan Pérez" required>
+                <input type="text" name="representante" required>
             </div>
 
             <div class="form-group">
                 <label>Nombre del Estudiante:</label>
-                <input type="text" name="estudiante" placeholder="Nombre del niño/a" required>
+                <input type="text" name="estudiante" required>
             </div>
 
             <div class="form-group">
@@ -197,69 +190,118 @@
 
             <div class="form-group">
                 <label>Número de Celular:</label>
-                <input type="tel" name="celular" maxlength="10" placeholder="09xxxxxxxx" required>
+                <input type="tel" name="celular" maxlength="10" required>
             </div>
 
-           <div class="form-group">
-    <label>Día de preferencia:</label>
-    <select name="dia" id="selectDia" required>
-        <option value="">Cargando días...</option>
-    </select>
-</div>
+            <div class="form-group">
+                <label>Día de preferencia:</label>
+                <select name="dia" id="selectDia" required>
+                    <option value="">Cargando días...</option>
+                </select>
+            </div>
 
-<div class="form-group">
-    <label>Horario disponible:</label>
-    <select name="horario" id="selectHorario" disabled required>
-        <option value="">Selecciona primero un día</option>
-    </select>
-</div>
+            <div class="form-group">
+                <label>Horario disponible:</label>
+                <select name="horario" id="selectHorario" disabled required>
+                    <option value="">Selecciona primero un día</option>
+                </select>
+            </div>
 
-<script>
-    let datosGlobales = []; // Aquí guardaremos los datos de Google
-    const selectDia = document.getElementById('selectDia');
-    const selectHorario = document.getElementById('selectHorario');
+            <button type="submit">📩 Enviar Información</button>
+        </form>
+    </main>
 
-    // 1. Cargar todos los datos al iniciar
-    async function inicializarFormulario() {
-        try {
-            const res = await fetch(URL_GOOGLE);
-            datosGlobales = await res.json();
-            
-            // Obtener días únicos (Lunes, Martes, etc.)
-            const diasUnicos = [...new Set(datosGlobales.map(item => item.dia))];
-            
-            selectDia.innerHTML = '<option value="">-- Selecciona un día --</option>';
-            diasUnicos.forEach(dia => {
-                const opt = document.createElement('option');
-                opt.value = dia;
-                opt.textContent = dia;
-                selectDia.appendChild(opt);
-            });
-        } catch (e) {
-            selectDia.innerHTML = '<option>Error al cargar</option>';
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div id="loader" class="loader"></div>
+            <p id="modal-text">Procesando...</p>
+            <button id="btnCerrar" style="display:none; margin-top:15px; padding:8px 15px; cursor:pointer;">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        // TU LINK DE GOOGLE
+        const URL_GOOGLE = "https://script.google.com/macros/s/AKfycbytufCF-UGyYHFGQSJCfdE1Q5Y88o64ggRPVxFw9f2p3bS6YJbLIAR635kt1f9pjgTY/exec";
+
+        let datosGlobales = [];
+        const selectDia = document.getElementById('selectDia');
+        const selectHorario = document.getElementById('selectHorario');
+        const modal = document.getElementById('modal');
+        const modalText = document.getElementById('modal-text');
+        const loader = document.getElementById('loader');
+        const btnCerrar = document.getElementById('btnCerrar');
+        const form = document.getElementById('formReserva');
+
+        // 1. CARGAR DÍAS Y HORAS AL INICIAR
+        async function inicializarFormulario() {
+            try {
+                const res = await fetch(URL_GOOGLE);
+                datosGlobales = await res.json();
+                const diasUnicos = [...new Set(datosGlobales.map(item => item.dia))];
+                
+                selectDia.innerHTML = '<option value="">-- Selecciona un día --</option>';
+                diasUnicos.forEach(dia => {
+                    const opt = document.createElement('option');
+                    opt.value = dia;
+                    opt.textContent = dia;
+                    selectDia.appendChild(opt);
+                });
+            } catch (e) {
+                selectDia.innerHTML = '<option>Error al cargar horarios</option>';
+            }
         }
-    }
 
-    // 2. Cuando cambie el día, filtrar las horas
-    selectDia.addEventListener('change', () => {
-        const diaSeleccionado = selectDia.value;
-        
-        // Limpiar y habilitar el select de horas
-        selectHorario.innerHTML = '<option value="">-- Elige la hora --</option>';
-        selectHorario.disabled = !diaSeleccionado;
+        // 2. FILTRAR HORAS SEGÚN EL DÍA
+        selectDia.addEventListener('change', () => {
+            const diaSeleccionado = selectDia.value;
+            selectHorario.innerHTML = '<option value="">-- Elige la hora --</option>';
+            selectHorario.disabled = !diaSeleccionado;
 
-        if (diaSeleccionado) {
-            // Filtrar solo los horarios que corresponden al día elegido
-            const filtrados = datosGlobales.filter(h => h.dia === diaSeleccionado);
-            
-            filtrados.forEach(h => {
-                const opt = document.createElement('option');
-                opt.value = h.hora;
-                opt.textContent = `${h.hora} (${h.cupos} disponibles)`;
-                selectHorario.appendChild(opt);
-            });
-        }
-    });
+            if (diaSeleccionado) {
+                const filtrados = datosGlobales.filter(h => h.dia === diaSeleccionado);
+                filtrados.forEach(h => {
+                    const opt = document.createElement('option');
+                    opt.value = h.hora;
+                    opt.textContent = `${h.hora} (${h.cupos} disponibles)`;
+                    selectHorario.appendChild(opt);
+                });
+            }
+        });
 
-    window.onload = inicializarFormulario;
-</script>
+        // 3. ENVIAR DATOS A GOOGLE
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            loader.style.display = 'block';
+            btnCerrar.style.display = 'none';
+            modalText.textContent = "Enviando reserva...";
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(URL_GOOGLE, {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.text();
+
+                loader.style.display = 'none';
+                if (result === "OK") {
+                    modalText.innerHTML = "✅ ¡Reserva exitosa!<br>Nos contactaremos pronto.";
+                    form.reset();
+                    inicializarFormulario(); // Recarga cupos
+                } else {
+                    modalText.textContent = "❌ No hay cupos disponibles.";
+                }
+            } catch (error) {
+                loader.style.display = 'none';
+                modalText.textContent = "❌ Error al enviar. Inténtalo de nuevo.";
+            }
+            btnCerrar.style.display = 'inline-block';
+        });
+
+        btnCerrar.onclick = () => modal.style.display = 'none';
+        window.onload = inicializarFormulario;
+    </script>
+</body>
+</html>
