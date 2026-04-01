@@ -380,6 +380,28 @@ border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     </div>
 
     <script>
+        // Función Menú Móvil (Hamburguesa Animada)
+        function toggleMenu() {
+            const menuBtn = document.getElementById('menuBtn');
+            const navMobile = document.getElementById('navLinksMobile');
+            
+            menuBtn.classList.toggle('active');
+            navMobile.classList.toggle('active');
+        }
+
+        // Navegación SPA
+        function irA(seccionId){
+
+    document.querySelectorAll('.seccion-pagina')
+        .forEach(s => s.classList.remove('activa'));
+
+    const nueva = document.getElementById(seccionId);
+
+    if(nueva){
+        nueva.classList.add('activa');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
         // TU LINK DE GOOGLE
         const URL_GOOGLE = "https://script.google.com/macros/s/AKfycbytufCF-UGyYHFGQSJCfdE1Q5Y88o64ggRPVxFw9f2p3bS6YJbLIAR635kt1f9pjgTY/exec";
 
