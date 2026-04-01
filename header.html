@@ -200,96 +200,66 @@
                 <input type="tel" name="celular" maxlength="10" placeholder="09xxxxxxxx" required>
             </div>
 
-            <div class="form-group">
-                <label>Horario disponible:</label>
-                <select name="horario" id="selectHorario" required>
-                    <option value="">Cargando horarios...</option>
-                </select>
-            </div>
+           <div class="form-group">
+    <label>Día de preferencia:</label>
+    <select name="dia" id="selectDia" required>
+        <option value="">Cargando días...</option>
+    </select>
+</div>
 
-            <button type="submit">📩 Enviar Información y Reservar</button>
-        </form>
-    </main>
+<div class="form-group">
+    <label>Horario disponible:</label>
+    <select name="horario" id="selectHorario" disabled required>
+        <option value="">Selecciona primero un día</option>
+    </select>
+</div>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <div id="loader" class="loader"></div>
-            <p id="modal-text">Procesando reserva...</p>
-            <button id="btnCerrarModal" style="display:none; margin-top:15px; padding:8px 20px; cursor:pointer;">Cerrar</button>
-        </div>
-    </div>
+<script>
+    let datosGlobales = []; // Aquí guardaremos los datos de Google
+    const selectDia = document.getElementById('selectDia');
+    const selectHorario = document.getElementById('selectHorario');
 
-    <script>
-        // --- CONFIGURACIÓN ---
-        const URL_GOOGLE = "TU_URL_DE_APPS_SCRIPT_AQUI"; // REEMPLAZA ESTO
-        
-        const form = document.getElementById('formReserva');
-        const selectHorario = document.getElementById('selectHorario');
-        const modal = document.getElementById('modal');
-        const modalText = document.getElementById('modal-text');
-        const loader = document.getElementById('loader');
-        const btnCerrar = document.getElementById('btnCerrarModal');
-
-        // 1. CARGAR HORARIOS DESDE LA HOJA "CUPOS"
-        async function cargarHorarios() {
-            try {
-                const response = await fetch(URL_GOOGLE);
-                const data = await response.json();
-                
-                selectHorario.innerHTML = '<option value="">-- Elige un horario --</option>';
-                
-                data.forEach(h => {
-                    const opt = document.createElement('option');
-                    opt.value = h.texto; // Lo que se envía a la Hoja 1
-                    opt.textContent = `${h.texto} (${h.cupos} cupos)`; // Lo que ve el usuario
-                    selectHorario.appendChild(opt);
-                });
-            } catch (error) {
-                selectHorario.innerHTML = '<option value="">Error al cargar horarios</option>';
-            }
+    // 1. Cargar todos los datos al iniciar
+    async function inicializarFormulario() {
+        try {
+            const res = await fetch(URL_GOOGLE);
+            datosGlobales = await res.json();
+            
+            // Obtener días únicos (Lunes, Martes, etc.)
+            const diasUnicos = [...new Set(datosGlobales.map(item => item.dia))];
+            
+            selectDia.innerHTML = '<option value="">-- Selecciona un día --</option>';
+            diasUnicos.forEach(dia => {
+                const opt = document.createElement('option');
+                opt.value = dia;
+                opt.textContent = dia;
+                selectDia.appendChild(opt);
+            });
+        } catch (e) {
+            selectDia.innerHTML = '<option>Error al cargar</option>';
         }
+    }
 
-        // 2. ENVIAR FORMULARIO
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
+    // 2. Cuando cambie el día, filtrar las horas
+    selectDia.addEventListener('change', () => {
+        const diaSeleccionado = selectDia.value;
+        
+        // Limpiar y habilitar el select de horas
+        selectHorario.innerHTML = '<option value="">-- Elige la hora --</option>';
+        selectHorario.disabled = !diaSeleccionado;
+
+        if (diaSeleccionado) {
+            // Filtrar solo los horarios que corresponden al día elegido
+            const filtrados = datosGlobales.filter(h => h.dia === diaSeleccionado);
             
-            // Mostrar Modal
-            modal.style.display = 'flex';
-            loader.style.display = 'block';
-            modalText.textContent = 'Enviando información...';
-            btnCerrar.style.display = 'none';
+            filtrados.forEach(h => {
+                const opt = document.createElement('option');
+                opt.value = h.hora;
+                opt.textContent = `${h.hora} (${h.cupos} disponibles)`;
+                selectHorario.appendChild(opt);
+            });
+        }
+    });
 
-            const formData = new FormData(form);
-
-            try {
-                const response = await fetch(URL_GOOGLE, {
-                    method: 'POST',
-                    body: formData
-                });
-
-                const resultado = await response.text();
-
-                if (resultado === "OK") {
-                    loader.style.display = 'none';
-                    modalText.innerHTML = "✅ ¡Reserva Exitosa!<br>Nos comunicaremos pronto.";
-                    form.reset();
-                    cargarHorarios(); // Recargar para actualizar los cupos restantes
-                } else {
-                    loader.style.display = 'none';
-                    modalText.textContent = "❌ Lo sentimos, ya no hay cupos en ese horario.";
-                }
-            } catch (error) {
-                loader.style.display = 'none';
-                modalText.textContent = "❌ Error de conexión. Inténtalo de nuevo.";
-            }
-            
-            btnCerrar.style.display = 'inline-block';
-        });
-
-        btnCerrar.onclick = () => modal.style.display = 'none';
-
-        // Inicializar
-        window.onload = cargarHorarios;
-    </script>
-</body>
-</html>
+    window.onload = inicializarFormulario;
+</script>
